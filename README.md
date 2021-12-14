@@ -20,7 +20,7 @@ Using the env0 TF provider to create an env0 Template and associate it with a se
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_template_project_assignment"></a> [template\_project\_assignment](#module\_template\_project\_assignment) | modules/template_project_assignment | n/a |
+| <a name="module_template_project_assignment"></a> [template\_project\_assignment](#module\_template\_project\_assignment) | ./modules/template_project_assignment | n/a |
 
 ## Resources
 

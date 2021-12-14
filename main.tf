@@ -22,13 +22,13 @@ resource "env0_template" "template" {
   revision               = each.value.revision
   ssh_keys               = each.value.ssh_keys
   github_installation_id = each.value.github_installation_id
-
+  type                   = "terraform"
 }
 
 # Using module as a helper
 # Take each template, and assign the projects
 module "template_project_assignment" {
-  source = "modules/template_project_assignment"
+  source = "./modules/template_project_assignment"
 
   for_each = env0_template.template
 
