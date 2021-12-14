@@ -33,7 +33,7 @@ module "template_project_assignment" {
   for_each = env0_template.template
 
   template_id = each.value.id
-  project_id  = var.templates[each.key].projects
+  projects    = var.templates[each.key].projects
 }
 
 variable "templates" {
