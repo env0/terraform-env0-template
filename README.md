@@ -32,7 +32,7 @@ Using the env0 TF provider to create an env0 Template and associate it with a se
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_templates"></a> [templates](#input\_templates) | define a set of templates assigned to projects | <pre>map(<br>    object({<br>      name                   = string<br>      description            = string<br>      repository             = string<br>      path                   = string<br>      revision               = string<br>      ssh_keys               = list(string)<br>      github_installation_id = number<br>      projects               = list(string)<br>    })<br>  )</pre> | n/a | yes |
+| <a name="input_templates"></a> [templates](#input\_templates) | define a set of templates assigned to projects | <pre>map(<br>    object({<br>      name                   = string<br>      description            = string<br>      repository             = string<br>      path                   = string<br>      revision               = string<br>      ssh_keys               = list(map(string))<br>      github_installation_id = number<br>      projects               = list(string)<br>    })<br>  )</pre> | n/a | yes |
 
 ## Outputs
 

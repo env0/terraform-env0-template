@@ -44,7 +44,7 @@ variable "templates" {
       repository             = string
       path                   = string
       revision               = string
-      ssh_keys               = list(string)
+      ssh_keys               = list(map(string))
       github_installation_id = number
       projects               = list(string)
     })
