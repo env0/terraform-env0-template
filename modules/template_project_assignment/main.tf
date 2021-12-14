@@ -23,7 +23,7 @@ data "env0_template" "template" {
 
 # Assign each project with template_id
 resource "env0_template_project_assignment" "assignment" {
-  for_each = env0_project.project
+  for_each = data.env0_project.project
 
   template_id = var.template_id
   project_id  = each.value.id
