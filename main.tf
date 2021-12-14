@@ -8,9 +8,6 @@ terraform {
   experiments = [module_variable_optional_attrs]
 }
 
-provider "env0" {
-}
-
 # Create each template
 resource "env0_template" "template" {
   for_each = var.templates

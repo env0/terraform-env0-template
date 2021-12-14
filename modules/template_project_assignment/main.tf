@@ -8,9 +8,6 @@ terraform {
   experiments = [module_variable_optional_attrs]
 }
 
-provider "env0" {
-}
-
 # Get project from names
 data "env0_project" "project" {
   for_each = toset(var.projects)
