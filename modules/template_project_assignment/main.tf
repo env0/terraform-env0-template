@@ -13,7 +13,7 @@ provider "env0" {
 
 # Get project from names
 data "env0_project" "project" {
-  for_each = toset(projects)
+  for_each = toset(var.projects)
   name     = each.key
 }
 
