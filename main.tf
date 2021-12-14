@@ -22,6 +22,7 @@ resource "env0_template" "template" {
   revision               = each.value.revision
   ssh_keys               = each.value.ssh_keys
   github_installation_id = each.value.github_installation_id
+  terraform_version      = each.value.terraform_version
   type                   = "terraform"
 }
 
@@ -44,6 +45,7 @@ variable "templates" {
       repository             = string
       path                   = string
       revision               = string
+      terraform_version      = string
       ssh_keys               = list(map(string))
       github_installation_id = number
       projects               = list(string)
