@@ -37,16 +37,16 @@ variable "projects" {
   description = "list of project names"
 }
 
-output "template" {
-  value = data.env0_template.template.name
-}
+# output "template" {
+#   value = data.env0_template.template.name
+# }
 
-output "projects" {
-  value = var.projects
-}
+# output "projects" {
+#   value = var.projects
+# }
 
-output "ids" {
-  value = {
-    for k, v in env0_template_project_assignment.assignment : k => v.id
-  }
-}
+# output "ids" {
+#   value = {
+#     for k, v in env0_template_project_assignment.assignment : k => v.id
+#   }
+# }
