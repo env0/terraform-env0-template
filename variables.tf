@@ -1,7 +1,7 @@
 // var templates
 // note: implicitly requires template.name to be unique otherwise data lookups will fail
 variable "templates" {
-  type = list[
+  type = list(
     object({
       name              = string
       description       = string
@@ -10,8 +10,8 @@ variable "templates" {
       revision          = string
       terraform_version = string
       ssh_keys          = list(map(string))
-      }
-  )]
+    })
+  )
   description = "define a list of templates assigned to projects"
 }
 

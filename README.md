@@ -15,7 +15,7 @@ Using the env0 TF provider to create an env0 Template and associate it with a se
 
 | Name | Version |
 |------|---------|
-| <a name="provider_env0"></a> [env0](#provider\_env0) | >= 1.15 |
+| <a name="provider_env0"></a> [env0](#provider\_env0) | 1.15.3 |
 
 ## Modules
 
@@ -34,7 +34,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_github_installation_id"></a> [github\_installation\_id](#input\_github\_installation\_id) | n/a | `string` | `""` | no |
 | <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | name of ssh-key used by env0\_ssh\_key (Data Source) | `string` | `""` | no |
-| <a name="input_templates"></a> [templates](#input\_templates) | define a list of templates assigned to projects | <pre>list[<br>    object({<br>      name              = string<br>      description       = string<br>      repository        = string<br>      path              = string<br>      revision          = string<br>      terraform_version = string<br>      ssh_keys          = list(map(string))<br>      }<br>  )]</pre> | n/a | yes |
+| <a name="input_templates"></a> [templates](#input\_templates) | define a list of templates assigned to projects | <pre>list(<br>    object({<br>      name              = string<br>      description       = string<br>      repository        = string<br>      path              = string<br>      revision          = string<br>      terraform_version = string<br>      ssh_keys          = list(map(string))<br>    })<br>  )</pre> | n/a | yes |
 
 ## Outputs
 
