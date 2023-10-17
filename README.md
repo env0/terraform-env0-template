@@ -8,33 +8,37 @@ Using the env0 TF provider to create an env0 Template and associate it with a se
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_env0"></a> [env0](#requirement\_env0) | 0.0.20 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.3 |
+| <a name="requirement_env0"></a> [env0](#requirement\_env0) | >= 1.15 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_env0"></a> [env0](#provider\_env0) | 0.0.20 |
+| <a name="provider_env0"></a> [env0](#provider\_env0) | 1.15.3 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_template_project_assignment"></a> [template\_project\_assignment](#module\_template\_project\_assignment) | ./modules/template_project_assignment | n/a |
+No modules.
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [env0_template.template](https://registry.terraform.io/providers/env0/env0/0.0.20/docs/resources/template) | resource |
+| [env0_template.template](https://registry.terraform.io/providers/env0/env0/latest/docs/resources/template) | resource |
+| [env0_ssh_key.keys](https://registry.terraform.io/providers/env0/env0/latest/docs/data-sources/ssh_key) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_templates"></a> [templates](#input\_templates) | define a set of templates assigned to projects | <pre>map(<br>    object({<br>      name                   = string<br>      description            = string<br>      repository             = string<br>      path                   = string<br>      revision               = string<br>      terraform_version      = string<br>      ssh_keys               = list(map(string))<br>      github_installation_id = number<br>      projects               = list(string)<br>    })<br>  )</pre> | n/a | yes |
+| <a name="input_github_installation_id"></a> [github\_installation\_id](#input\_github\_installation\_id) | n/a | `string` | `""` | no |
+| <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | name of ssh-key used by env0\_ssh\_key (Data Source) | `string` | `""` | no |
+| <a name="input_templates"></a> [templates](#input\_templates) | define a list of templates assigned to projects | <pre>map(<br>    object({<br>      name              = string<br>      description       = string<br>      repository        = string<br>      path              = string<br>      revision          = string<br>      terraform_version = string<br>    })<br>  )</pre> | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_templates"></a> [templates](#output\_templates) | templates created and managed by env0 |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

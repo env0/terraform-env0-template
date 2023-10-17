@@ -1,11 +1,6 @@
-terraform {
-  required_providers {
-    env0 = {
-      source  = "env0/env0"
-      version = "> 0.2.24"
-    }
-  }
-  experiments = [module_variable_optional_attrs]
+data "env0_ssh_key" "keys" {
+  count = (var.ssh_key == "") ? 0 : 1
+  name  = var.ssh_key
 }
 
 # Create each template
@@ -17,36 +12,34 @@ resource "env0_template" "template" {
   repository             = each.value.repository
   path                   = each.value.path
   revision               = each.value.revision
-  ssh_keys               = each.value.ssh_keys
-  github_installation_id = each.value.github_installation_id
+  ssh_keys               = data.env0_ssh_key.keys
+  github_installation_id = var.github_installation_id
   terraform_version      = each.value.terraform_version
   type                   = "terraform"
 }
 
-# Using module as a helper
-# Take each template, and assign the projects
-module "template_project_assignment" {
-  source = "./modules/template_project_assignment"
+locals {
+  templates = {
+    for k, v in var.templates : v.name => v
+  }
 
-  for_each = env0_template.template
-
-  template_id = each.value.id
-  projects    = var.templates[each.key].projects
-}
-
-variable "templates" {
-  type = map(
-    object({
-      name                   = string
-      description            = string
-      repository             = string
-      path                   = string
-      revision               = string
-      terraform_version      = string
-      ssh_keys               = list(map(string))
-      github_installation_id = number
-      projects               = list(string)
-    })
-  )
-  description = "define a set of templates assigned to projects"
+  // not used anywhere, just an example of what the variable input would look like
+  my_templates = [
+    {
+      name              = "My New EC2 Template"
+      description       = "Golden EC2 template for dev team"
+      repository        = "https://github.com/env0/acme-demo"
+      path              = "simple-ec2-instance"
+      revision          = "main"
+      terraform_version = "1.5.7"
+    },
+    {
+      name              = "My EC2 Template"
+      description       = "Golden EC2 template for dev team"
+      repository        = "https://github.com/env0/acme-demo"
+      path              = "simple-ec2-instance"
+      revision          = "main"
+      terraform_version = "1.5.6"
+    }
+  ]
 }
