@@ -5,7 +5,7 @@ data "env0_ssh_key" "keys" {
 
 # Create each template
 resource "env0_template" "template" {
-  for_each = local.templates
+  for_each = var.templates
 
   name                   = each.value.name
   description            = each.value.description
